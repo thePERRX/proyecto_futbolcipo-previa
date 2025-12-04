@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Header personalizado: dos div en columna -->
+    <div class="custom-header">
+      <!-- Parte superior: logo + título centrados -->
+      <div class="header-top">
+        <div class="title-group">
+          <img src="assets/imagenes/logo-cipo.png" alt="Logo" class="header-logo" />
+          <h1>Futbol.ARG</h1>
+        </div>
+      </div>
+
+      <!-- Parte inferior: tres secciones que ocupan todo el ancho, separadas y centradas -->
+      <div class="header-bottom">
+        <div class="section">
+          <ion-icon aria-hidden="true" name="trophy-outline"></ion-icon>
+          <span>local</span>
+        </div>
+        <div class="section">
+          <ion-icon aria-hidden="true" name="globe-outline"></ion-icon>
+          <span>internacial</span>
+        </div>
+        <div class="section">
+          <ion-icon aria-hidden="true" name="newspaper-outline"></ion-icon>
+          <span>novedades</span>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<!--predeterminado estructura
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-explore-container name="Tab 1 page"></app-explore-container>
+</ion-content>
+-->

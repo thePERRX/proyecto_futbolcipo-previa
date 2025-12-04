@@ -1,0 +1,152 @@
+/* Estilos para el header personalizado en tab1 */
+.custom-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* centra el contenido horizontalmente */
+	width: 100%;
+	box-sizing: border-box;
+	/* Fondo oscuro pastel y variables locales para fácil ajuste */
+	--header-bg: #2D3E50; /* oscuro pastel (azul grisáceo) */
+	--header-foreground: #FFFFFF; /* color del texto sobre el header */
+	background: var(--header-bg);
+	color: var(--header-foreground);
+	/* tipografía para el header */
+	font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 600;
+	/* un poco de padding para separar del toolbar */
+	padding: 8px 0;
+}
+
+.custom-header .header-top {
+	width: 100%;
+	display: flex;
+	flex-direction: row; /* fuerza logo y título en la misma línea */
+	justify-content: center; /* título centrado */
+	align-items: center; /* centra verticalmente */
+	gap: 6px; /* reducido para acercar título y logo */
+	padding: 8px 12px;
+	flex-wrap: nowrap; /* evita que se apilen */
+}
+
+.custom-header .header-top h1 {
+	margin: 0;
+	font-size: 1.15rem;
+	text-align: center;
+	/* color blanco para buen contraste sobre fondo oscuro */
+	color: var(--header-foreground);
+	line-height: 1; 
+}
+
+/* Logo junto al título */
+.custom-header .header-top .header-logo {
+    height: 38px; /* ligeramente reducido para mejor encaje */
+    width: auto;
+    margin-right: 6px; /* reducido para acercar al título */
+    display: inline-block;
+    object-fit: contain;
+}
+
+/* Grupo que contiene logo + título: aplicamos aquí el borde inferior estético */
+.custom-header .header-top .title-group {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding-bottom: 8px; /* espacio para el borde */
+	/* borde bonito: color claro sobre oscuro */
+	border-bottom: 3px solid rgba(255,255,255,0.12);
+	border-radius: 6px;
+	/* sombra sutil para separar visualmente */
+	box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+/* Si prefieres un borde más visible, cambia la opacidad o el color. */
+
+/* Nota: el logo y el título se mantienen en la misma línea siempre; si prefieres apilarlos en pantallas
+	 muy pequeñas podemos reactivar una media query. */
+
+.custom-header .header-bottom {
+	width: 100%;
+	display: flex;
+	gap: 12px; /* separación entre secciones */
+	padding: 8px 12px;
+	box-sizing: border-box;
+	justify-content: space-between; /* asegura que combinadas ocupen todo el ancho */
+}
+
+.custom-header .header-bottom .section {
+	position: relative; /* para el pseudo-elemento decorativo */
+	flex: 1; /* cada sección ocupa igual ancho para llenar el contenedor */
+	text-align: center; /* texto centrado dentro de cada sección */
+	padding: 10px 8px 18px; /* más espacio inferior para la línea decorativa */
+	box-sizing: border-box;
+	min-width: 0; /* evita overflow en flex items */
+	/* fondo opaco (sin transparencia) - usar mismo color del header para continuidad */
+	background: var(--header-bg);
+	color: var(--header-foreground); /* texto blanco */
+	border-radius: 4px 4px 0 0; /* solo ligeramente en la parte superior */
+	border: none;
+	/* sin sombra, la línea decorativa reemplaza la sombra */
+	box-shadow: none;
+}
+
+/* Estilos para los iconos dentro de las secciones */
+.custom-header .header-bottom .section ion-icon {
+	display: block;
+	margin: 0 auto 6px; /* icono centrado encima del texto */
+	font-size: 20px; /* tamaño visible pero discreto */
+	color: rgba(255,255,255,0.9);
+}
+
+.custom-header .header-bottom .section span {
+	display: block;
+	font-size: 0.95rem;
+	color: var(--header-foreground);
+}
+
+/* línea decorativa inferior con gradiente y sombra sutil */
+.custom-header .header-bottom .section::after {
+	content: '';
+	position: absolute;
+	left: 12%;
+	right: 12%;
+	bottom: 8px; /* ligeramente por encima del borde del contenedor */
+	height: 4px;
+	border-radius: 4px;
+	background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,200,150,0.16), rgba(255,255,255,0.06));
+	filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+	opacity: 0.98;
+}
+
+/* Variante alternativa: transparente con borde (aplicar la clase `transparent` a la sección) */
+.custom-header .header-bottom .section.transparent {
+	position: relative;
+	/* quitar transparencia: usar el mismo fondo opaco que las otras secciones */
+	background: var(--header-bg);
+	color: var(--header-foreground);
+	border-radius: 0;
+	border: none;
+	box-shadow: none; /* sin sombra para apariencia plana */
+	padding-bottom: 18px;
+}
+
+/* línea decorativa para la variante transparente (más delicada) */
+.custom-header .header-bottom .section.transparent::after {
+	content: '';
+	position: absolute;
+	left: 14%;
+	right: 14%;
+	bottom: 8px;
+	height: 3px;
+	border-radius: 3px;
+	background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+	filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+}
+
+/* Separador visual opcional entre secciones */
+/* Si prefieres un borde vertical en lugar de gap+card, puedes usar esta regla (está comentada): */
+/*
+.custom-header .header-bottom .section:not(:last-child) {
+	border-right: 1px solid rgba(5,42,64,0.06);
+}
+*/
+
