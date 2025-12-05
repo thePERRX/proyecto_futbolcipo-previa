@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación del Proyecto FutbolCipo - Desarrollo de Interfaz Ionic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            border-bottom: 3px solid #2D3E50;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            color: #2D3E50;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            color: #666;
+        }
+        
+        .info-proyecto {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #2D3E50;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        
+        .info-proyecto p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+        
+        .info-proyecto strong {
+            color: #2D3E50;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        section h2 {
+            font-size: 1.8em;
+            color: #2D3E50;
+            border-bottom: 2px solid #2D3E50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        section h3 {
+            font-size: 1.3em;
+            color: #355070;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .objetivo {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #0288d1;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .objetivo strong {
+            color: #0288d1;
+        }
+        
+        .feature-list {
+            background-color: #f0f8f0;
+            padding: 20px;
+            border-left: 4px solid #4caf50;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .feature-list ul {
+            list-style: none;
+            margin-left: 20px;
+        }
+        
+        .feature-list li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .code-block {
+            background-color: #2D3E50;
+            color: #e9eef2;
+            padding: 20px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .code-label {
+            background-color: #1a252f;
+            padding: 5px 10px;
+            margin: 0 0 10px 0;
+            border-radius: 3px;
+            display: inline-block;
+            font-size: 0.85em;
+            color: #4db8ff;
+        }
+        
+        .componente {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-left: 4px solid #ff9800;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .componente h4 {
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+        
+        .tabla-comparativa {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .tabla-comparativa thead {
+            background-color: #2D3E50;
+            color: white;
+        }
+        
+        .tabla-comparativa th,
+        .tabla-comparativa td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tabla-comparativa tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .tabla-comparativa thead th {
+            font-weight: 600;
+        }
+        
+        .color-sample {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .estructura-archivos {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 15px 0;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        .highlight {
+            background-color: #fff9c4;
+            padding: 2px 5px;
+            border-radius: 2px;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 20px;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📱 FutbolCipo</h1>
+            <p>Documentación Técnica del Desarrollo de la Interfaz Interactiva</p>
+        </header>
+
+        <div class="info-proyecto">
+            <p><strong>Proyecto:</strong> Aplicación Ionic - FutbolCipo</p>
+            <p><strong>Framework:</strong> Ionic Framework + Angular</p>
+            <p><strong>Versión de Angular:</strong> 20.3.3</p>
+            <p><strong>Plataforma:</strong> Ionic (Web, iOS, Android)</p>
+            <p><strong>Fecha de Documentación:</strong> Diciembre 2025</p>
+        </div>
+
+        <!-- SECCIÓN 1: INTRODUCCIÓN Y OBJETIVOS -->
+        <section>
+            <h2>1. Introducción y Objetivos del Proyecto</h2>
+            
+            <h3>1.1 Descripción General</h3>
+            <p>El proyecto FutbolCipo es una aplicación móvil desarrollada con Ionic Framework que busca proporcionar a los usuarios una plataforma interactiva para acceder a información sobre futbol en Argentina. La aplicación se caracteriza por una interfaz moderna, intuitiva y responsiva.</p>
+            
+            <h3>1.2 Objetivos Principales</h3>
+            <div class="objetivo">
+                <strong>Objetivo 1:</strong> Diseñar e implementar un header personalizado que sea atractivo visualmente y cumpla funciones de navegación temática.
+            </div>
+            
+            <div class="objetivo">
+                <strong>Objetivo 2:</strong> Crear una navegación por tabs en la parte inferior de la aplicación que permita al usuario acceder a las diferentes secciones (Inicio, En vivo, Cuenta).
+            </div>
+            
+            <div class="objetivo">
+                <strong>Objetivo 3:</strong> Implementar componentes interactivos como menús desplegables (popovers) para acceder a opciones adicionales de forma eficiente.
+            </div>
+            
+            <div class="objetivo">
+                <strong>Objetivo 4:</strong> Establecer una paleta de colores coherente y profesional que refleje la identidad visual de la marca FutbolCipo.
+            </div>
+            
+            <div class="objetivo">
+                <strong>Objetivo 5:</strong> Implementar versionado con Git para garantizar el control y seguimiento de los cambios realizados en el proyecto.
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: CARACTERÍSTICAS IMPLEMENTADAS -->
+        <section>
+            <h2>2. Características Implementadas</h2>
+            
+            <h3>2.1 Header Personalizado</h3>
+            <div class="feature-list">
+                <strong>Componentes del Header:</strong>
+                <ul>
+                    <li>Logo de la aplicación (logo-cipo.png)</li>
+                    <li>Título principal "Futbol.ARG"</li>
+                    <li>Tres secciones temáticas con iconos</li>
+                    <li>Menú desplegable en la sección "local"</li>
+                    <li>Decoraciones visuales (bordes, gradientes, sombras)</li>
+                </ul>
+            </div>
+            
+            <h3>2.2 Secciones Temáticas</h3>
+            <p>El header contiene tres secciones temáticas que organizan el contenido:</p>
+            <table class="tabla-comparativa">
+                <thead>
+                    <tr>
+                        <th>Sección</th>
+                        <th>Icono</th>
+                        <th>Descripción</th>
+                        <th>Funcionalidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Local</strong></td>
+                        <td>trophy-outline</td>
+                        <td>Información de torneos locales argentinos</td>
+                        <td>Botón interactivo con menú desplegable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internacial</strong></td>
+                        <td>globe-outline</td>
+                        <td>Competiciones internacionales</td>
+                        <td>Sección estática</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Novedades</strong></td>
+                        <td>newspaper-outline</td>
+                        <td>Últimas noticias y actualizaciones</td>
+                        <td>Sección estática</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>2.3 Menú Desplegable (Popover)</h3>
+            <p>La sección "local" cuenta con un menú desplegable que ofrece tres opciones:</p>
+            <table class="tabla-comparativa">
+                <thead>
+                    <tr>
+                        <th>Opción</th>
+                        <th>Icono</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Apertura</strong></td>
+                        <td>play-outline</td>
+                        <td>Inicia la reproducción o accede a información sobre aperturas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clausura</strong></td>
+                        <td>stop-outline</td>
+                        <td>Detiene o accede a información sobre clausuras</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Otros</strong></td>
+                        <td>ellipsis-horizontal</td>
+                        <td>Acceso a opciones adicionales</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>2.4 Navegación por Tabs</h3>
+            <p>La aplicación cuenta con una barra de navegación en la parte inferior con tres tabs principales:</p>
+            <table class="tabla-comparativa">
+                <thead>
+                    <tr>
+                        <th>Tab</th>
+                        <th>Icono</th>
+                        <th>Etiqueta</th>
+                        <th>Ruta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tab 1</td>
+                        <td>home</td>
+                        <td>Inicio</td>
+                        <td>/tabs/tab1</td>
+                    </tr>
+                    <tr>
+                        <td>Tab 2</td>
+                        <td>radio-outline</td>
+                        <td>En vivo</td>
+                        <td>/tabs/tab2</td>
+                    </tr>
+                    <tr>
+                        <td>Tab 3</td>
+                        <td>person-circle</td>
+                        <td>Cuenta</td>
+                        <td>/tabs/tab3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECCIÓN 3: DISEÑO Y ESTILOS -->
+        <section>
+            <h2>3. Diseño y Estilos Visuales</h2>
+            
+            <h3>3.1 Paleta de Colores</h3>
+            <table class="tabla-comparativa">
+                <thead>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Color (Hexadecimal)</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Header Background</td>
+                        <td><span class="color-sample" style="background-color: #2D3E50;"></span>#2D3E50</td>
+                        <td>Fondo del encabezado personalizado</td>
+                    </tr>
+                    <tr>
+                        <td>Header Foreground</td>
+                        <td><span class="color-sample" style="background-color: #FFFFFF;"></span>#FFFFFF</td>
+                        <td>Texto e iconos del header</td>
+                    </tr>
+                    <tr>
+                        <td>App Background</td>
+                        <td><span class="color-sample" style="background-color: #273344;"></span>#273344</td>
+                        <td>Fondo general de la aplicación</td>
+                    </tr>
+                    <tr>
+                        <td>App Foreground</td>
+                        <td><span class="color-sample" style="background-color: #e9eef2;"></span>#e9eef2</td>
+                        <td>Texto principal de la aplicación</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>3.2 Tipografía</h3>
+            <p>La aplicación utiliza la fuente <span class="highlight">Poppins</span> para todas las secciones, proporcionando una apariencia moderna y profesional. Esta fuente es de fácil legibilidad tanto en dispositivos móviles como en pantallas más grandes.</p>
+            
+            <h3>3.3 Elementos Decorativos</h3>
+            <div class="componente">
+                <h4>Bordes Decorativos</h4>
+                <p>Cada sección del header cuenta con un borde inferior decorativo que utiliza un gradiente linear con los siguientes efectos:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Gradiente de color: desde rgba(255,255,255,0.06) hasta rgba(255,200,150,0.16)</li>
+                    <li>Filtro drop-shadow para crear profundidad</li>
+                    <li>Altura: 4px con border-radius de 4px</li>
+                    <li>Posición: 8px desde el borde inferior</li>
+                </ul>
+            </div>
+            
+            <div class="componente">
+                <h4>Efectos de Hover</h4>
+                <p>Los botones y secciones interactivas cuentan con efectos visuales al pasar el cursor:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Transición de opacidad suave (0.2s ease)</li>
+                    <li>Cambio de opacidad a 0.8 al hacer hover</li>
+                    <li>Fondo semi-transparente en opciones del popover</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: ARQUITECTURA TÉCNICA -->
+        <section>
+            <h2>4. Arquitectura Técnica y Estructura de Archivos</h2>
+            
+            <h3>4.1 Estructura del Proyecto</h3>
+            <div class="estructura-archivos">
+FutbolCipo/
+├── src/
+│   ├── app/
+│   │   ├── tab1/
+│   │   │   ├── tab1.page.html
+│   │   │   ├── tab1.page.ts
+│   │   │   ├── tab1.page.scss
+│   │   │   ├── tab1-routing.module.ts
+│   │   │   └── tab1.module.ts
+│   │   ├── tabs/
+│   │   │   ├── tabs.page.html
+│   │   │   ├── tabs.page.scss
+│   │   │   ├── tabs-routing.module.ts
+│   │   │   └── tabs.module.ts
+│   │   ├── app.component.ts
+│   │   ├── app.module.ts
+│   │   └── app-routing.module.ts
+│   ├── assets/
+│   │   └── imagenes/
+│   │       └── logo-cipo.png
+│   ├── global.scss
+│   └── index.html
+├── package.json
+├── angular.json
+└── ionic.config.json
+            </div>
+            
+            <h3>4.2 Componentes Principales</h3>
+            
+            <div class="componente">
+                <h4>Component: Tab1Page</h4>
+                <p><strong>Ruta:</strong> src/app/tab1/tab1.page.ts</p>
+                <p><strong>Descripción:</strong> Componente principal de la pestaña de inicio que contiene el header personalizado y la lógica de interacción del menú desplegable.</p>
+                <p><strong>Responsabilidades:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Gestionar la referencia al elemento popover</li>
+                    <li>Capturar la selección del usuario en el menú desplegable</li>
+                    <li>Registrar las acciones en consola para debugging</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: CÓDIGO IMPLEMENTADO -->
+        <section>
+            <h2>5. Código Implementado</h2>
+            
+            <h3>5.1 HTML - Estructura del Header</h3>
+            <p><strong>Archivo:</strong> src/app/tab1/tab1.page.html</p>
+            <div class="code-block">
+                <div class="code-label">HTML - Estructura Principal del Header</div>
+&lt;ion-header [translucent]="true"&gt;
+  &lt;ion-toolbar&gt;
+    &lt;!-- Header personalizado: dos div en columna --&gt;
+    &lt;div class="custom-header"&gt;
+      &lt;!-- Parte superior: logo + título centrados --&gt;
+      &lt;div class="header-top"&gt;
+        &lt;div class="title-group"&gt;
+          &lt;img src="assets/imagenes/logo-cipo.png" 
+               alt="Logo" class="header-logo" /&gt;
+          &lt;h1&gt;Futbol.ARG&lt;/h1&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Parte inferior: tres secciones --&gt;
+      &lt;div class="header-bottom"&gt;
+        &lt;button id="localButton" class="section section-button"&gt;
+          &lt;ion-icon name="trophy-outline"&gt;&lt;/ion-icon&gt;
+          &lt;span&gt;local&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="section"&gt;
+          &lt;ion-icon name="globe-outline"&gt;&lt;/ion-icon&gt;
+          &lt;span&gt;internacial&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="section"&gt;
+          &lt;ion-icon name="newspaper-outline"&gt;&lt;/ion-icon&gt;
+          &lt;span&gt;novedades&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+            </div>
+            
+            <h3>5.2 HTML - Menú Desplegable (Popover)</h3>
+            <p><strong>Archivo:</strong> src/app/tab1/tab1.page.html</p>
+            <div class="code-block">
+                <div class="code-label">HTML - Popover con Opciones</div>
+&lt;ion-popover #localPopover trigger="localButton" 
+             side="bottom" alignment="start"&gt;
+  &lt;ng-template&gt;
+    &lt;div class="popover-content"&gt;
+      &lt;button class="popover-option" 
+              (click)="selectLocalOption('apertura'); 
+                       localPopover.dismiss()"&gt;
+        &lt;ion-icon name="play-outline"&gt;&lt;/ion-icon&gt;
+        &lt;span&gt;Apertura&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;button class="popover-option" 
+              (click)="selectLocalOption('clausura'); 
+                       localPopover.dismiss()"&gt;
+        &lt;ion-icon name="stop-outline"&gt;&lt;/ion-icon&gt;
+        &lt;span&gt;Clausura&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;button class="popover-option" 
+              (click)="selectLocalOption('otros'); 
+                       localPopover.dismiss()"&gt;
+        &lt;ion-icon name="ellipsis-horizontal"&gt;&lt;/ion-icon&gt;
+        &lt;span&gt;Otros&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/ng-template&gt;
+&lt;/ion-popover&gt;
+            </div>
+            
+            <h3>5.3 TypeScript - Lógica del Componente</h3>
+            <p><strong>Archivo:</strong> src/app/tab1/tab1.page.ts</p>
+            <div class="code-block">
+                <div class="code-label">TypeScript - Clase Tab1Page</div>
+import { Component, ViewChild } from '@angular/core';
+import { IonPopover } from '@ionic/angular';
+
+@Component({
+  selector: 'app-tab1',
+  templateUrl: 'tab1.page.html',
+  styleUrls: ['tab1.page.scss'],
+  standalone: false,
+})
+export class Tab1Page {
+  // Referencia al elemento popover del DOM
+  @ViewChild('localPopover') localPopover!: IonPopover;
+
+  // Variable para almacenar la opción seleccionada
+  selectedLocalOption: string = '';
+
+  constructor() {}
+
+  // Método que se ejecuta cuando el usuario selecciona 
+  // una opción en el menú desplegable
+  selectLocalOption(option: string) {
+    this.selectedLocalOption = option;
+    console.log('Opción seleccionada (local):', option);
+  }
+}
+            </div>
+            
+            <h3>5.4 SCSS - Estilos del Header</h3>
+            <p><strong>Archivo:</strong> src/app/tab1/tab1.page.scss</p>
+            <div class="code-block">
+                <div class="code-label">SCSS - Variables y Estilos Base</div>
+:host {
+  --header-bg: #2D3E50;
+  --header-foreground: #FFFFFF;
+}
+
+.custom-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 20px;
+  background-color: var(--header-bg);
+  color: var(--header-foreground);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.title-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.title-group h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+            </div>
+            
+            <div class="code-block">
+                <div class="code-label">SCSS - Estilos de Secciones</div>
+.header-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 15px;
+}
+
+.section {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  padding: 10px 8px 18px;
+  box-sizing: border-box;
+  min-width: 0;
+  background: var(--header-bg);
+  color: var(--header-foreground);
+  border-radius: 4px 4px 0 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.section span {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--header-foreground);
+}
+
+/* Decorative line para cada sección */
+.section::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 8px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), 
+              rgba(255,200,150,0.16), rgba(255,255,255,0.06));
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+  opacity: 0.98;
+}
+            </div>
+            
+            <div class="code-block">
+                <div class="code-label">SCSS - Estilos del Botón y Popover</div>
+.section-button {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.section-button:hover {
+  opacity: 0.8;
+}
+
+/* Estilos para el popover */
+.popover-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--header-bg);
+  color: var(--header-foreground);
+  padding: 0;
+  min-width: 150px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.popover-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--header-bg);
+  color: var(--header-foreground);
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s ease;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.popover-option:hover {
+  background: rgba(255,255,255,0.1);
+}
+            </div>
+            
+            <h3>5.5 SCSS - Estilos Globales</h3>
+            <p><strong>Archivo:</strong> src/global.scss</p>
+            <div class="code-block">
+                <div class="code-label">SCSS - Variables Globales</div>
+:root {
+  --app-bg: #273344;
+  --app-foreground: #e9eef2;
+}
+
+html, body, ion-app, ion-router-outlet, .ion-page {
+  background-color: var(--app-bg) !important;
+}
+
+ion-content {
+  --background: transparent !important;
+}
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: TECNOLOGÍAS UTILIZADAS -->
+        <section>
+            <h2>6. Tecnologías Utilizadas</h2>
+            
+            <h3>6.1 Stack Tecnológico</h3>
+            <table class="tabla-comparativa">
+                <thead>
+                    <tr>
+                        <th>Tecnología</th>
+                        <th>Descripción</th>
+                        <th>Versión</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ionic Framework</strong></td>
+                        <td>Framework para desarrollo de aplicaciones móviles híbridas</td>
+                        <td>Última estable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Angular</strong></td>
+                        <td>Framework JavaScript para desarrollo de aplicaciones</td>
+                        <td>20.3.3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TypeScript</strong></td>
+                        <td>Lenguaje de programación tipado basado en JavaScript</td>
+                        <td>5.x</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SCSS/SASS</strong></td>
+                        <td>Preprocesador de CSS con características avanzadas</td>
+                        <td>Última estable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Git</strong></td>
+                        <td>Sistema de control de versiones distribuido</td>
+                        <td>Última versión</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>6.2 Librerías de Iconos</h3>
+            <p>La aplicación utiliza los iconos de <span class="highlight">Ionicons</span>, que es la librería de iconos nativa de Ionic. Los iconos utilizados son:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>trophy-outline:</strong> Para la sección "local"</li>
+                <li><strong>globe-outline:</strong> Para la sección "internacial"</li>
+                <li><strong>newspaper-outline:</strong> Para la sección "novedades"</li>
+                <li><strong>play-outline:</strong> Para la opción "Apertura" en el popover</li>
+                <li><strong>stop-outline:</strong> Para la opción "Clausura" en el popover</li>
+                <li><strong>ellipsis-horizontal:</strong> Para la opción "Otros" en el popover</li>
+                <li><strong>home:</strong> Para el tab "Inicio"</li>
+                <li><strong>radio-outline:</strong> Para el tab "En vivo"</li>
+                <li><strong>person-circle:</strong> Para el tab "Cuenta"</li>
+            </ul>
+        </section>
+
+        <!-- SECCIÓN 7: CONTROL DE VERSIONES -->
+        <section>
+            <h2>7. Control de Versiones con Git</h2>
+            
+            <h3>7.1 Configuración Inicial del Repositorio</h3>
+            <p>El proyecto utiliza Git como sistema de control de versiones para mantener un registro de todos los cambios realizados. Se ha configurado un archivo <span class="highlight">.gitignore</span> para excluir archivos que no deberían ser versionados.</p>
+            
+            <h3>7.2 Archivos Excluidos en .gitignore</h3>
+            <div class="code-block">
+                <div class="code-label">.gitignore - Archivos y Carpetas Excluidas</div>
+# Node
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Build output
+www/
+dist/
+platforms/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ionic
+.ionic/
+            </div>
+            
+            <h3>7.3 Flujo de Versionado Recomendado</h3>
+            <p>Para realizar cambios en el repositorio, se recomienda seguir este flujo:</p>
+            <ol style="margin-left: 20px; margin-top: 10px;">
+                <li>Realizar los cambios en los archivos del proyecto</li>
+                <li>Verificar el estado con: <code>git status</code></li>
+                <li>Agregar los cambios: <code>git add .</code></li>
+                <li>Crear un commit: <code>git commit -m "Descripción del cambio"</code></li>
+                <li>Empujar a la rama remota: <code>git push origin main</code></li>
+            </ol>
+        </section>
+
+        <!-- SECCIÓN 8: FUNCIONALIDADES Y COMPORTAMIENTO -->
+        <section>
+            <h2>8. Funcionalidades y Comportamiento Interactivo</h2>
+            
+            <h3>8.1 Interacción con el Menú Desplegable</h3>
+            <p>Cuando el usuario hace clic en el botón "local" en el header, se ejecuta el siguiente flujo:</p>
+            <ol style="margin-left: 20px; margin-top: 10px;">
+                <li>El atributo <code>trigger="localButton"</code> en el popover detecta el evento de clic</li>
+                <li>El popover se abre debajo del botón (<code>side="bottom"</code>)</li>
+                <li>Se muestra un menú con tres opciones: Apertura, Clausura y Otros</li>
+                <li>Cuando el usuario selecciona una opción:
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>Se ejecuta el método <code>selectLocalOption()</code> con la opción seleccionada</li>
+                        <li>Se almacena la opción en la variable <code>selectedLocalOption</code></li>
+                        <li>Se registra la selección en la consola del navegador</li>
+                        <li>El popover se cierra automáticamente</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h3>8.2 Navegación por Tabs</h3>
+            <p>La barra de tabs en la parte inferior permite navegar entre tres secciones principales:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Tab 1 (Inicio):</strong> Página principal con el header personalizado</li>
+                <li><strong>Tab 2 (En vivo):</strong> Información de eventos en directo</li>
+                <li><strong>Tab 3 (Cuenta):</strong> Información y configuración de la cuenta del usuario</li>
+            </ul>
+            
+            <h3>8.3 Efectos Visuales</h3>
+            <div class="componente">
+                <h4>Hover Effects</h4>
+                <p>Los elementos interactivos cuentan con efectos visuales al pasar el cursor:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Botón "local": Cambio de opacidad a 0.8</li>
+                    <li>Opciones del popover: Cambio de fondo a rgba(255,255,255,0.1)</li>
+                    <li>Transiciones suaves (0.2s) para no ser abruptas</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 9: INSTRUCCIONES DE EJECUCIÓN -->
+        <section>
+            <h2>9. Instrucciones de Ejecución y Compilación</h2>
+            
+            <h3>9.1 Requisitos Previos</h3>
+            <ul style="margin-left: 20px;">
+                <li>Node.js y npm instalados en el sistema</li>
+                <li>Ionic CLI instalado globalmente: <code>npm install -g @ionic/cli</code></li>
+                <li>Git instalado para control de versiones</li>
+            </ul>
+            
+            <h3>9.2 Instalación de Dependencias</h3>
+            <div class="code-block">
+                <div class="code-label">Terminal - Instalación</div>
+cd FutbolCipo
+npm install
+            </div>
+            
+            <h3>9.3 Ejecución en Desarrollo</h3>
+            <div class="code-block">
+                <div class="code-label">Terminal - Servidor de Desarrollo</div>
+ionic serve
+            </div>
+            <p>Este comando inicia un servidor de desarrollo en la dirección <code>http://localhost:8100</code> donde podrás ver la aplicación en tiempo real.</p>
+            
+            <h3>9.4 Compilación para Producción</h3>
+            <div class="code-block">
+                <div class="code-label">Terminal - Build de Producción</div>
+ionic build --prod
+            </div>
+        </section>
+
+        <!-- SECCIÓN 10: CONCLUSIONES Y RECOMENDACIONES -->
+        <section>
+            <h2>10. Conclusiones y Recomendaciones Futuras</h2>
+            
+            <h3>10.1 Conclusiones</h3>
+            <p>Se ha implementado exitosamente una interfaz interactiva para la aplicación FutbolCipo utilizando Ionic Framework y Angular. La aplicación cuenta con:</p>
+            <div class="feature-list">
+                <ul>
+                    <li>Un header personalizado con logo y título centrados</li>
+                    <li>Tres secciones temáticas con iconos representativos</li>
+                    <li>Un menú desplegable funcional con tres opciones</li>
+                    <li>Navegación por tabs para acceder a diferentes secciones</li>
+                    <li>Diseño coherente con paleta de colores profesional</li>
+                    <li>Efectos visuales suaves y transiciones agradables</li>
+                    <li>Control de versiones con Git para seguimiento de cambios</li>
+                </ul>
+            </div>
+            
+            <h3>10.2 Recomendaciones Futuras</h3>
+            <p>Para mejorar y expandir la funcionalidad de la aplicación, se recomienda:</p>
+            <ol style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Integración con Backend:</strong> Conectar la aplicación con una API REST para obtener datos dinámicos sobre torneos, eventos en vivo y noticias.</li>
+                <li><strong>Funcionalidad del Popover:</strong> Implementar la lógica de negocio detrás de las opciones del menú desplegable (filtrado de datos, navegación, etc.).</li>
+                <li><strong>Página de Cuenta:</strong> Desarrollar la funcionalidad completa de autenticación y gestión de cuenta de usuario.</li>
+                <li><strong>Transmisión en Vivo:</strong> Implementar streaming de video para la sección "En vivo".</li>
+                <li><strong>Notificaciones Push:</strong> Configurar notificaciones para alertas de eventos importantes.</li>
+                <li><strong>Tests Unitarios:</strong> Crear tests unitarios con Jasmine para garantizar la calidad del código.</li>
+                <li><strong>Optimización de Rendimiento:</strong> Implementar lazy loading y code splitting para mejorar la velocidad de carga.</li>
+            </ol>
+        </section>
+
+        <div class="footer">
+            <p>Documentación generada para el proyecto FutbolCipo - Diciembre 2025</p>
+            <p>Este documento contiene la especificación técnica completa de la interfaz implementada.</p>
+        </div>
+    </div>
+</body>
+</html>

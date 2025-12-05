@@ -98,12 +98,93 @@
 }
 
 .custom-header .header-bottom .section span {
-	display: block;
-	font-size: 0.95rem;
-	color: var(--header-foreground);
+  display: block;
+  font-size: 0.95rem;
+  color: var(--header-foreground);
 }
 
-/* línea decorativa inferior con gradiente y sombra sutil */
+/* Estilos para el botón de "local" (compatibilidad con section) */
+.custom-header .header-bottom .section-button {
+  /* heredar estilos de .section */
+  position: relative;
+  flex: 1;
+  text-align: center;
+  padding: 10px 8px 18px;
+  box-sizing: border-box;
+  min-width: 0;
+  background: var(--header-bg);
+  color: var(--header-foreground);
+  border-radius: 4px 4px 0 0;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.custom-header .header-bottom .section-button:hover {
+  opacity: 0.8;
+}
+
+/* Decorative line para el botón (mismo que .section::after) */
+.custom-header .header-bottom .section-button::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 8px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,200,150,0.16), rgba(255,255,255,0.06));
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+  opacity: 0.98;
+}
+
+/* Estilos para el popover */
+.popover-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--header-bg);
+  color: var(--header-foreground);
+  padding: 0;
+  min-width: 150px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.popover-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--header-bg);
+  color: var(--header-foreground);
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s ease;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.popover-option:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.popover-option ion-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.popover-option span {
+  flex: 1;
+}/* línea decorativa inferior con gradiente y sombra sutil */
 .custom-header .header-bottom .section::after {
 	content: '';
 	position: absolute;
@@ -149,4 +230,102 @@
 	border-right: 1px solid rgba(5,42,64,0.06);
 }
 */
+
+/* ==========================
+   Estilos para las cards
+   ========================== */
+.card-section {
+  width: 100%;
+}
+
+.section-title {
+  padding: 20px 16px 16px;
+  position: relative;
+  text-align: center;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #2D3E50, #1a252f);
+  padding: 12px 24px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), -6px 4px 12px rgba(0, 0, 0, 0.15), 6px 4px 12px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  border-bottom: 4px solid;
+  border-image: linear-gradient(90deg, #ff9800, #ff6b6b, #ff9800) 1;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+/* Decoración especial debajo del título - REMOVIDA (ahora está en el h2) */
+
+.card-list {
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.item-card {
+	--background: #ffffff;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.card-image-wrapper {
+	position: relative;
+	width: 100%;
+	height: 180px;
+	overflow: hidden;
+}
+
+.card-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.like-button {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	--padding-start: 6px;
+	--padding-end: 6px;
+	color: var(--header-foreground);
+	background: rgba(0,0,0,0.18);
+	border-radius: 20px;
+}
+
+.card-title {
+	margin: 0 0 6px 0;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.card-description {
+	margin: 0;
+	color: rgba(0,0,0,0.7);
+	font-size: 0.95rem;
+}
+
+.card-actions {
+	display: flex;
+	gap: 12px;
+	justify-content: space-between;
+	margin-top: 12px;
+}
+
+/* Ajustes responsivos */
+@media (min-width: 768px) {
+	.card-list {
+		padding: 20px;
+	}
+	.card-image-wrapper {
+		height: 220px;
+	}
+}
 

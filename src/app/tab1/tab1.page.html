@@ -12,30 +12,72 @@
 
       <!-- Parte inferior: tres secciones que ocupan todo el ancho, separadas y centradas -->
       <div class="header-bottom">
-        <div class="section">
+        <!-- Sección local con botón desplegable (popover) -->
+        <button id="localButton" class="section section-button">
           <ion-icon aria-hidden="true" name="trophy-outline"></ion-icon>
-          <span>local</span>
-        </div>
+          <span>Local</span>
+        </button>
         <div class="section">
           <ion-icon aria-hidden="true" name="globe-outline"></ion-icon>
-          <span>internacial</span>
+          <span>Internacional</span>
         </div>
         <div class="section">
           <ion-icon aria-hidden="true" name="newspaper-outline"></ion-icon>
-          <span>novedades</span>
+          <span>Novedades</span>
         </div>
       </div>
+
+      <!-- Popover para opciones de 'local' -->
+      <ion-popover #localPopover trigger="localButton" side="bottom" alignment="start">
+        <ng-template>
+          <div class="popover-content">
+            <button class="popover-option" (click)="selectLocalOption('apertura'); localPopover.dismiss()">
+              <ion-icon name="play-outline"></ion-icon>
+              <span>Apertura</span>
+            </button>
+            <button class="popover-option" (click)="selectLocalOption('clausura'); localPopover.dismiss()">
+              <ion-icon name="stop-outline"></ion-icon>
+              <span>Clausura</span>
+            </button>
+            <button class="popover-option" (click)="selectLocalOption('otros'); localPopover.dismiss()">
+              <ion-icon name="ellipsis-horizontal"></ion-icon>
+              <span>Otros</span>
+            </button>
+          </div>
+        </ng-template>
+      </ion-popover>
     </div>
   </ion-toolbar>
 </ion-header>
-<!--predeterminado estructura
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- Contenido principal: lista de cards (targetas) apiladas -->
+<ion-content class="page-content" [fullscreen]="true">
+  <div class="card-section">
+    <!-- Título destacado -->
+    <div class="section-title">
+      <h2>Lo más Destacable</h2>
+      <div class="title-decoration"></div>
+    </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <!-- Lista de cards -->
+    <div class="card-list">
+      <ion-card class="item-card" *ngFor="let card of cards; let i = index">
+      <div class="card-image-wrapper">
+        <img [src]="card.image" alt="{{card.title}}" class="card-image" />
+        <ion-button fill="clear" class="like-button" (click)="toggleLike(i)" aria-label="Me gusta">
+          <ion-icon [name]="card.liked ? 'heart' : 'heart-outline'"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-card-content>
+        <h3 class="card-title">{{card.title}}</h3>
+        <p class="card-description">{{card.description}}</p>
+
+        <div class="card-actions">
+          <ion-button color="primary" (click)="placeItem(i)">Colocar</ion-button>
+          <ion-button fill="clear" (click)="moreInfo(i)">Más Info</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  </div>
 </ion-content>
--->
