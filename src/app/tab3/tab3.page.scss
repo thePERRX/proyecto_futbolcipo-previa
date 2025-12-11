@@ -1,77 +1,76 @@
-/* Estilos para el header personalizado en tab1 */
+/* ==============================
+   HEADER PERSONALIZADO
+   ============================== */
 .custom-header {
-	display: flex;
-	flex-direction: column;
-	align-items: center; /* centra el contenido horizontalmente */
-	width: 100%;
-	box-sizing: border-box;
-	/* Fondo oscuro pastel y variables locales para fácil ajuste */
-	--header-bg: #2D3E50; /* oscuro pastel (azul grisáceo) */
-	--header-foreground: #FFFFFF; /* color del texto sobre el header */
-	background: var(--header-bg);
-	color: var(--header-foreground);
-	/* tipografía para el header */
-	font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	font-weight: 600;
-	/* un poco de padding para separar del toolbar */
-	padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  --header-bg: #2D3E50;
+  --header-foreground: #FFFFFF;
+  background: var(--header-bg);
+  color: var(--header-foreground);
+
+  font-family: 'Poppins', 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  padding: 8px 0;
 }
 
 .custom-header .header-top {
-	width: 100%;
-	display: flex;
-	flex-direction: row; /* fuerza logo y título en la misma línea */
-	justify-content: center; /* título centrado */
-	align-items: center; /* centra verticalmente */
-	gap: 6px; /* reducido para acercar título y logo */
-	padding: 8px 12px;
-	flex-wrap: nowrap; /* evita que se apilen */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
 }
-
 
 .custom-header .header-top h1 {
-	margin: 0;
-	font-size: 1.15rem;
-	text-align: center;
-	/* color blanco para buen contraste sobre fondo oscuro */
-	color: var(--header-foreground);
-	line-height: 1; 
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--header-foreground);
+  text-align: center;
 }
 
-/* Logo junto al título */
 .custom-header .header-top .header-logo {
-    height: 38px; /* ligeramente reducido para mejor encaje */
-    width: auto;
-    margin-right: 6px; /* reducido para acercar al título */
-    display: inline-block;
-    object-fit: contain;
+  height: 38px;
+  width: auto;
+  margin-right: 6px;
+  object-fit: contain;
 }
 
-/* Grupo que contiene logo + título: aplicamos aquí el borde inferior estético */
 .custom-header .header-top .title-group {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	padding-bottom: 8px; /* espacio para el borde */
-	/* borde bonito: color claro sobre oscuro */
-	border-bottom: 3px solid rgba(255,255,255,0.12);
-	border-radius: 6px;
-	/* sombra sutil para separar visualmente */
-	box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
 }
 
-
+/* ==============================
+   CONTENEDOR LOGIN / REGISTRO
+   ============================== */
 .auth-container {
   width: 90%;
   max-width: 350px;
   margin: 40px auto;
   text-align: center;
+  padding: 25px;
+  background: #1c1c1e;
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.35);
+  transition: all 0.3s ease;
 }
 
+/* BOTONES TOGGLE */
 .toggle-buttons {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .toggle-buttons button {
@@ -80,8 +79,9 @@
   border: none;
   padding: 12px;
   font-weight: 500;
-  color: #666;
+  color: #aaa;
   border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .toggle-buttons button.active {
@@ -90,18 +90,65 @@
   font-weight: 700;
 }
 
+/* FORMULARIOS */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Fade animation al cambiar de formulario */
+.animate-fade {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .form h2 {
   margin-bottom: 15px;
-  font-weight: 600;
+  font-weight: 700;
+  color: #fff;
 }
 
+/* Estilo de ion-item con efecto de foco */
 ion-item {
-  margin-bottom: 10px;
+  --background: #2D3E50;
   border-radius: 8px;
-  --background: #F6F6FA;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
+ion-item:focus-within {
+  --background: #3a4d6b;
+  box-shadow: 0 4px 10px rgba(106,90,254,0.4);
+}
+
+ion-input {
+  color: #fff;
+}
+
+/* BOTONES */
 ion-button {
-  margin-top: 15px;
+  margin-top: 10px;
   --background: #6A5AFE;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(106,90,254,0.4);
+  transition: transform 0.2s ease;
+}
+
+ion-button:hover {
+  transform: translateY(-2px);
 }

@@ -1,390 +1,312 @@
-/* Estilos para el header personalizado en tab1 */
+/* =========================
+   INICIO: HEADER PREMIUM
+========================= */
 .custom-header {
-	display: flex;
-	flex-direction: column;
-	align-items: center; /* centra el contenido horizontalmente */
-	width: 100%;
-	box-sizing: border-box;
-	/* Fondo oscuro pastel y variables locales para fácil ajuste */
-	--header-bg: #2D3E50; /* oscuro pastel (azul grisáceo) */
-	--header-foreground: #FFFFFF; /* color del texto sobre el header */
-	background: var(--header-bg);
-	color: var(--header-foreground);
-	/* tipografía para el header */
-	font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	font-weight: 600;
-	/* un poco de padding para separar del toolbar */
-	padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  --header-bg: #1f2a38; /* azul oscuro elegante */
+  --header-foreground: #ffffff;
+  background: var(--header-bg);
+  color: var(--header-foreground);
+  font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  padding: 10px 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Header Top: Logo + título */
 .custom-header .header-top {
-	width: 100%;
-	display: flex;
-	flex-direction: row; /* fuerza logo y título en la misma línea */
-	justify-content: center; /* título centrado */
-	align-items: center; /* centra verticalmente */
-	gap: 6px; /* reducido para acercar título y logo */
-	padding: 8px 12px;
-	flex-wrap: nowrap; /* evita que se apilen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
 }
 
 .custom-header .header-top h1 {
-	margin: 0;
-	font-size: 1.15rem;
-	text-align: center;
-	/* color blanco para buen contraste sobre fondo oscuro */
-	color: var(--header-foreground);
-	line-height: 1; 
-}
-
-/* Logo junto al título */
-.custom-header .header-top .header-logo {
-    height: 38px; /* ligeramente reducido para mejor encaje */
-    width: auto;
-    margin-right: 6px; /* reducido para acercar al título */
-    display: inline-block;
-    object-fit: contain;
-}
-
-/* Grupo que contiene logo + título: aplicamos aquí el borde inferior estético */
-.custom-header .header-top .title-group {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	padding-bottom: 8px; /* espacio para el borde */
-	/* borde bonito: color claro sobre oscuro */
-	border-bottom: 3px solid rgba(255,255,255,0.12);
-	border-radius: 6px;
-	/* sombra sutil para separar visualmente */
-	box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-}
-
-/* Si prefieres un borde más visible, cambia la opacidad o el color. */
-
-/* Nota: el logo y el título se mantienen en la misma línea siempre; si prefieres apilarlos en pantallas
-	 muy pequeñas podemos reactivar una media query. */
-
-.custom-header .header-bottom {
-	width: 100%;
-	display: flex;
-	gap: 12px; /* separación entre secciones */
-	padding: 8px 12px;
-	box-sizing: border-box;
-	justify-content: space-between; /* asegura que combinadas ocupen todo el ancho */
-}
-
-.custom-header .header-bottom .section {
-	position: relative; /* para el pseudo-elemento decorativo */
-	flex: 1; /* cada sección ocupa igual ancho para llenar el contenedor */
-	text-align: center; /* texto centrado dentro de cada sección */
-	padding: 10px 8px 18px; /* más espacio inferior para la línea decorativa */
-	box-sizing: border-box;
-	min-width: 0; /* evita overflow en flex items */
-	/* fondo opaco (sin transparencia) - usar mismo color del header para continuidad */
-	background: var(--header-bg);
-	color: var(--header-foreground); /* texto blanco */
-	border-radius: 4px 4px 0 0; /* solo ligeramente en la parte superior */
-	border: none;
-	/* sin sombra, la línea decorativa reemplaza la sombra */
-	box-shadow: none;
-}
-
-/* Estilos para los iconos dentro de las secciones */
-.custom-header .header-bottom .section ion-icon {
-	display: block;
-	margin: 0 auto 6px; /* icono centrado encima del texto */
-	font-size: 20px; /* tamaño visible pero discreto */
-	color: rgba(255,255,255,0.9);
-}
-
-.custom-header .header-bottom .section span {
-  display: block;
-  font-size: 0.95rem;
+  margin: 0;
+  font-size: 1.3rem;
+  text-align: center;
   color: var(--header-foreground);
+  line-height: 1;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* Estilos para el botón de "local" (compatibilidad con section) */
+.custom-header .header-top .header-logo {
+  height: 40px;
+  width: auto;
+  display: inline-block;
+  object-fit: contain;
+}
+
+.custom-header .header-top .title-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+/* Header Bottom: Secciones */
+.custom-header .header-bottom {
+  display: flex;
+  gap: 14px;
+  padding: 10px 16px;
+  justify-content: space-between;
+}
+
+.custom-header .header-bottom .section,
 .custom-header .header-bottom .section-button {
-  /* heredar estilos de .section */
   position: relative;
   flex: 1;
   text-align: center;
-  padding: 10px 8px 18px;
-  box-sizing: border-box;
-  min-width: 0;
+  padding: 12px 8px 20px;
   background: var(--header-bg);
   color: var(--header-foreground);
-  border-radius: 4px 4px 0 0;
-  border: none;
-  box-shadow: none;
-  cursor: pointer;
-  font-family: inherit;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  transition: opacity 0.2s ease;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+.custom-header .header-bottom .section:hover,
 .custom-header .header-bottom .section-button:hover {
-  opacity: 0.8;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+  transform: translateY(-2px);
 }
 
-/* Decorative line para el botón (mismo que .section::after) */
+.custom-header .header-bottom .section ion-icon,
+.custom-header .header-bottom .section-button ion-icon {
+  font-size: 22px;
+  color: rgba(255,255,255,0.95);
+}
+
+.custom-header .header-bottom .section span,
+.custom-header .header-bottom .section-button span {
+  font-size: 1rem;
+  color: var(--header-foreground);
+}
+
+.custom-header .header-bottom .section::after,
 .custom-header .header-bottom .section-button::after {
   content: '';
   position: absolute;
   left: 12%;
   right: 12%;
-  bottom: 8px;
+  bottom: 10px;
   height: 4px;
   border-radius: 4px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,200,150,0.16), rgba(255,255,255,0.06));
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
-  opacity: 0.98;
+  background: linear-gradient(90deg, rgba(0, 183, 255, 0.1), rgba(0, 255, 255, 0.25), rgba(0, 183, 255, 0.1));
+  filter: drop-shadow(0 4px 8px rgba(0,183,255,0.4));
 }
 
-/* Estilos para el popover */
-.popover-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  background: var(--header-bg);
-  color: var(--header-foreground);
-  padding: 0;
-  min-width: 150px;
-  font-family: 'Poppins', sans-serif;
-}
+/* =========================
+   FIN: HEADER PREMIUM
+========================= */
 
-.popover-option {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: var(--header-bg);
-  color: var(--header-foreground);
-  border: none;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-family: 'Poppins', sans-serif;
-  transition: background 0.2s ease;
-  text-align: left;
-  width: 100%;
-  box-sizing: border-box;
-}
 
-.popover-option:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-.popover-option ion-icon {
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.popover-option span {
-  flex: 1;
-}/* línea decorativa inferior con gradiente y sombra sutil */
-.custom-header .header-bottom .section::after {
-	content: '';
-	position: absolute;
-	left: 12%;
-	right: 12%;
-	bottom: 8px; /* ligeramente por encima del borde del contenedor */
-	height: 4px;
-	border-radius: 4px;
-	background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,200,150,0.16), rgba(255,255,255,0.06));
-	filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
-	opacity: 0.98;
-}
-
-/* Variante alternativa: transparente con borde (aplicar la clase `transparent` a la sección) */
-.custom-header .header-bottom .section.transparent {
-	position: relative;
-	/* quitar transparencia: usar el mismo fondo opaco que las otras secciones */
-	background: var(--header-bg);
-	color: var(--header-foreground);
-	border-radius: 0;
-	border: none;
-	box-shadow: none; /* sin sombra para apariencia plana */
-	padding-bottom: 18px;
-}
-
-/* línea decorativa para la variante transparente (más delicada) */
-.custom-header .header-bottom .section.transparent::after {
-	content: '';
-	position: absolute;
-	left: 14%;
-	right: 14%;
-	bottom: 8px;
-	height: 3px;
-	border-radius: 3px;
-	background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.10), rgba(255,255,255,0.04));
-	filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
-}
-
-/* Separador visual opcional entre secciones */
-/* Si prefieres un borde vertical en lugar de gap+card, puedes usar esta regla (está comentada): */
-/*
-.custom-header .header-bottom .section:not(:last-child) {
-	border-right: 1px solid rgba(5,42,64,0.06);
-}
-*/
-
-/* ==========================
-   Estilos para las cards
-   ========================== */
+/* =========================
+   INICIO: CARDS PREMIUM
+========================= */
 .card-section {
   width: 100%;
 }
 
-.section-title {
-  padding: 20px 16px 16px;
-  position: relative;
-  text-align: center;
-}
-
 .section-title h2 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #fff;
   letter-spacing: 0.5px;
-  background: linear-gradient(135deg, #2D3E50, #1a252f);
-  padding: 12px 24px;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), -6px 4px 12px rgba(0, 0, 0, 0.15), 6px 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  padding: 14px 28px;
+  border-radius: 8px;
   display: inline-block;
   border-bottom: 4px solid;
-  border-image: linear-gradient(90deg, #ff9800, #ff6b6b, #ff9800) 1;
-  font-family: 'Montserrat', 'Poppins', sans-serif;
+  border-image: linear-gradient(90deg, #ffb300, #ff6d00, #ffb300) 1;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25), 0 0 12px rgba(255, 215, 0, 0.3);
 }
 
-/* Decoración especial debajo del título - REMOVIDA (ahora está en el h2) */
-
 .card-list {
-	padding: 16px;
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .item-card {
-	--background: #ffffff;
-	border-radius: 10px;
-	overflow: hidden;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
 }
 
 .card-image-wrapper {
-	position: relative;
-	width: 100%;
-	height: 180px;
-	overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
 
 .card-image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .like-button {
-	position: absolute;
-	top: 8px;
-	right: 8px;
-	--padding-start: 6px;
-	--padding-end: 6px;
-	color: var(--header-foreground);
-	background: rgba(0,0,0,0.18);
-	border-radius: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  background: rgba(0,0,0,0.25);
+  border-radius: 22px;
+  padding: 4px 8px;
 }
 
 .card-title {
-	margin: 0 0 6px 0;
-	font-size: 1rem;
-	font-weight: 600;
+  margin: 10px 0 6px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a237e;
 }
 
 .card-description {
-	margin: 0;
-	color: rgba(0,0,0,0.7);
-	font-size: 0.95rem;
+  font-size: 0.95rem;
+  color: rgba(0,0,0,0.75);
 }
 
 .card-actions {
-	display: flex;
-	gap: 12px;
-	justify-content: space-between;
-	margin-top: 12px;
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  margin-top: 12px;
 }
 
-/* Ajustes responsivos */
-@media (min-width: 768px) {
-	.card-list {
-		padding: 20px;
-	}
-	.card-image-wrapper {
-		height: 220px;
-	}
+/* =========================
+   FIN: CARDS PREMIUM
+========================= */
+
+
+/* =========================
+   INICIO: CLAUSURA PREMIUM
+========================= */
+.clausura-section {
+  margin-top: 40px;
+  padding: 12px;
 }
 
-
-
-
-.apertura-section {
-  margin-top: 30px;
-  padding: 10px;
-
+.clausura-title h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0047ff, #006dff);
+  padding: 12px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 102, 255, 0.5), 0 0 12px rgba(0, 183, 255, 0.4);
+  border-bottom: 4px solid #00b7ff;
 }
 
-.apertura-title {
-  text-align: center;
-  margin: 25px 0 15px;
+.clausura-decoration {
+  width: 80px;
+  height: 5px;
+  background: linear-gradient(90deg, #00b7ff, #008cff, #00b7ff);
+  margin: 10px auto 0;
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgba(0,183,255,0.7);
 }
 
-.apertura-title h2 {
-  font-size: 1.4rem;
+.clausura-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid #004cff33;
+  box-shadow: 0 8px 20px rgba(0, 119, 255, 0.25);
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.clausura-card:hover {
+  box-shadow: 0 12px 28px rgba(0, 119, 255, 0.35);
+}
+
+.clausura-card-title {
+  color: #0047ff !important;
   font-weight: 700;
-    color: #ffffff !important;
+  font-size: 1.2rem;
 }
 
-.apertura-section .title-decoration {
+.clausura-description {
+  color: rgba(0,0,0,0.75);
+}
+
+/* Banner Final "C" */
+.clausura-banner {
+  margin: 20px 0;
+  background: #0a0f25;
+  padding: 16px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 119, 255, 0.35);
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.team-logo {
   width: 60px;
-  height: 4px;
-  background: #3a57e8;
-  margin: 6px auto 0;
-  border-radius: 4px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 8px rgba(0,183,255,0.5));
 }
 
-
-
-
-
-.mySwiper {
-  width: 100%;
-  height: 220px;
-
-  .swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.team-name {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(0,183,255,0.5);
 }
 
-/* tamaño reducido para las flechitas */
-.swiper-button-next,
-.swiper-button-prev {
-  color: white; /* Cambiá a negro si tu imagen es clara */
-  scale: 0.6;   /* achica las flechas */
+.center-info {
+  text-align: center;
+  flex: 1;
 }
 
-.swiper-pagination-bullet {
-  background: white;
-  opacity: 0.8;
+.vs {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #00b7ff;
+  display: block;
+  text-shadow: 0 0 10px rgba(0,183,255,0.7);
 }
 
-.swiper-pagination-bullet-active {
-  background: #3880ff; /* Azul Ionic */
+.final-text {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
+/* =========================
+   FIN: CLAUSURA PREMIUM
+========================= */

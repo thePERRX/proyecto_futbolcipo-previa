@@ -79,12 +79,25 @@ export class Tab1Page implements AfterViewInit {
   }
 
   selectLocalOption(option: string) {
-    if (option === 'apertura') {
-      const target = document.getElementById('campeonApertura');
-      if (target) {
-        const y = target.offsetTop;
-        this.content.scrollToPoint(0, y, 500);
-      }
+
+  //Scroll para APERTURA
+  if (option === 'apertura') {
+    const target = document.getElementById('campeonApertura');
+    if (target) {
+      const y = target.offsetTop;
+      this.content.scrollToPoint(0, y, 500);
     }
   }
+
+  //Scroll para CLAUSURA
+  if (option === 'clausura') {
+    const target = document.getElementById('campeonClausura');
+    if (target) {
+      const y = target.offsetTop;
+      this.content.scrollToPoint(0, y, 500);
+    }
+  }
+
+}
+
 }

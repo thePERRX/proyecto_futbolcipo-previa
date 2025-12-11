@@ -1,35 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- ==============================
+         HEADER PERSONALIZADO
+         ============================== -->
     <div class="custom-header">
-    <div class="header-top">
+      <div class="header-top">
         <div class="title-group">
           <img src="assets/imagenes/logo-cipo.png" alt="Logo" class="header-logo" />
           <h1>Futbol.ARG</h1>
         </div>
       </div>
-      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Cuenta</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <!-- CONTENEDOR -->
+  <!-- ==============================
+       CONTENEDOR LOGIN / REGISTRO
+       ============================== -->
   <div class="auth-container">
 
-    <!-- BOTONES LOGIN / REGISTRO -->
+    <!-- BOTONES PARA TOGGLE ENTRE VISTAS -->
     <div class="toggle-buttons">
       <button [class.active]="view === 'login'" (click)="setView('login')">Iniciar Sesión</button>
       <button [class.active]="view === 'register'" (click)="setView('register')">Registrarse</button>
     </div>
 
-    <!-- FORM LOGIN -->
-    <form *ngIf="view === 'login'" class="form">
+    <!-- ==============================
+         FORMULARIO LOGIN
+         ============================== -->
+    <form *ngIf="view === 'login'" class="form animate-fade">
       <h2>Bienvenido</h2>
+
       <ion-item>
         <ion-input type="email" placeholder="Email"></ion-input>
       </ion-item>
@@ -41,9 +43,12 @@
       <ion-button expand="block">Ingresar</ion-button>
     </form>
 
-    <!-- FORM REGISTRO -->
-    <form *ngIf="view === 'register'" class="form">
+    <!-- ==============================
+         FORMULARIO REGISTRO
+         ============================== -->
+    <form *ngIf="view === 'register'" class="form animate-fade">
       <h2>Crear Cuenta</h2>
+
       <ion-item>
         <ion-input type="text" placeholder="Nombre completo"></ion-input>
       </ion-item>
@@ -61,4 +66,3 @@
 
   </div>
 </ion-content>
-

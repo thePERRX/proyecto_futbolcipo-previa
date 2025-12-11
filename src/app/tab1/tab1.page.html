@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <!-- Header personalizado: dos div en columna -->
+    <!-- ========================= -->
+    <!-- HEADER PERSONALIZADO -->
+    <!-- ========================= -->
     <div class="custom-header">
+
       <!-- Parte superior: logo + título centrados -->
       <div class="header-top">
         <div class="title-group">
@@ -10,24 +13,26 @@
         </div>
       </div>
 
-      <!-- Parte inferior: tres secciones que ocupan todo el ancho, separadas y centradas -->
+      <!-- Parte inferior: secciones del header -->
       <div class="header-bottom">
-        <!-- Sección local con botón desplegable (popover) -->
+        <!-- Botón Local con popover -->
         <button id="localButton" class="section section-button">
-          <ion-icon aria-hidden="true" name="trophy-outline"></ion-icon>
+          <ion-icon name="trophy-outline"></ion-icon>
           <span>Local</span>
         </button>
+
         <div class="section">
-          <ion-icon aria-hidden="true" name="globe-outline"></ion-icon>
+          <ion-icon name="globe-outline"></ion-icon>
           <span>Internacional</span>
         </div>
+
         <div class="section">
-          <ion-icon aria-hidden="true" name="newspaper-outline"></ion-icon>
+          <ion-icon name="newspaper-outline"></ion-icon>
           <span>Novedades</span>
         </div>
       </div>
 
-      <!-- Popover para opciones de 'local' -->
+      <!-- Popover para opciones de 'Local' -->
       <ion-popover #localPopover trigger="localButton" side="bottom" alignment="start">
         <ng-template>
           <div class="popover-content">
@@ -46,14 +51,21 @@
           </div>
         </ng-template>
       </ion-popover>
+
     </div>
   </ion-toolbar>
 </ion-header>
-<!-- Contenido principal: lista de cards (targetas) apiladas -->
-<ion-content  #content class="page-content" [fullscreen]="true">
+
+<!-- ========================= -->
+<!-- CONTENIDO PRINCIPAL -->
+<!-- ========================= -->
+<ion-content #content class="page-content" [fullscreen]="true">
+
+  <!-- ========================= -->
+  <!-- SECCIÓN: LO MÁS DESTACABLE -->
+  <!-- ========================= -->
   <div class="card-section">
-    <!-- Título destacado -->
-    <div class="section-title">
+    <div class="section-title" style="text-align:center;"> <!-- Centrado -->
       <h2>Lo más Destacable</h2>
       <div class="title-decoration"></div>
     </div>
@@ -61,81 +73,121 @@
     <!-- Lista de cards -->
     <div class="card-list">
       <ion-card class="item-card" *ngFor="let card of cards; let i = index">
+        <div class="card-image-wrapper">
+          <img [src]="card.image" alt="{{card.title}}" class="card-image" />
+          <ion-button fill="clear" class="like-button" (click)="toggleLike(i)" aria-label="Me gusta">
+            <ion-icon [name]="card.liked ? 'heart' : 'heart-outline'"></ion-icon>
+          </ion-button>
+        </div>
+
+        <ion-card-content>
+          <h3 class="card-title">{{card.title}}</h3>
+          <p class="card-description">{{card.description}}</p>
+          <div class="card-actions">
+            <ion-button color="primary" (click)="placeItem(i)">Colocar</ion-button>
+            <ion-button fill="clear" (click)="moreInfo(i)">Más Info</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <!-- ========================= -->
+  <!-- SECCIÓN ESPECIAL: Campeón Torneo Apertura -->
+  <!-- ========================= -->
+  <div id="campeonApertura" class="apertura-section">
+
+    <div class="apertura-title fancy-title">
+      <h2>🏆 Campeón Torneo Apertura</h2>
+      <div class="title-decoration"></div>
+    </div>
+
+    <ion-card class="item-card">
       <div class="card-image-wrapper">
-        <img [src]="card.image" alt="{{card.title}}" class="card-image" />
-        <ion-button fill="clear" class="like-button" (click)="toggleLike(i)" aria-label="Me gusta">
-          <ion-icon [name]="card.liked ? 'heart' : 'heart-outline'"></ion-icon>
-        </ion-button>
+
+        <!-- CARRUSEL -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="assets/imagenes/platense1.jpeg" class="card-image">
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/imagenes/platense2.jpg" class="card-image">
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/imagenes/platense3.jpg" class="card-image">
+            </div>
+          </div>
+
+          <!-- Paginación y flechas -->
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+
       </div>
 
       <ion-card-content>
-        <h3 class="card-title">{{card.title}}</h3>
-        <p class="card-description">{{card.description}}</p>
+        <h3 class="card-title">Campeón Torneo Apertura 2025: Platense</h3>
+        <p class="card-description">
+          El Calamar cerró un torneo histórico, mostrando carácter, solidez defensiva y un juego que enamoró a su gente. Un Apertura 2025 inolvidable.
+        </p>
 
         <div class="card-actions">
-          <ion-button color="primary" (click)="placeItem(i)">Colocar</ion-button>
-          <ion-button fill="clear" (click)="moreInfo(i)">Más Info</ion-button>
+          <ion-button color="primary">Ver Detalles</ion-button>
+          <ion-button fill="clear">Más Info</ion-button>
         </div>
       </ion-card-content>
     </ion-card>
-  </div>
-  </div>
 
-
-
-
-  <!-- SECCIÓN ESPECIAL: Campeón Torneo Apertura -->
-<!-- SECCIÓN ESPECIAL: Campeón Torneo Apertura -->
-<div id="campeonApertura" class="apertura-section">
-
-  <div class="apertura-title">
-    <h2>🏆 Campeón Torneo Apertura</h2>
-    <div class="title-decoration"></div>
   </div>
 
-  <ion-card class="item-card">
-    <div class="card-image-wrapper">
+  <!-- ========================= -->
+  <!-- SECCIÓN ESPECIAL: Campeón Torneo Clausura -->
+  <!-- ========================= -->
+  <div id="campeonClausura" class="clausura-section">
 
-      <!-- CARRUSEL COMPLETO -->
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-
-          <div class="swiper-slide">
-            <img src="assets/imagenes/platense1.jpeg" class="card-image">
-          </div>
-
-          <div class="swiper-slide">
-            <img src="../../assets/imagenes/platense2.jpg" class="card-image">
-          </div>
-
-          <div class="swiper-slide">
-            <img src="assets/imagenes/platense3.jpg" class="card-image">
-          </div>
-
-        </div>
-
-        <!-- Paginación y flechas deben estar DENTRO -->
-        <div class="swiper-pagination"></div>
-
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div>
-
+    <!-- Título Clausura -->
+    <div class="clausura-title">
+      <h2>🏆 Campeón Torneo Clausura 2025</h2>
+      <div class="clausura-decoration"></div>
     </div>
 
-    <ion-card-content>
-      <h3 class="card-title">Campeón Torneo Apertura 2025: Platense</h3>
-      <p class="card-description">
-        El Calamar cerró un torneo histórico, mostrando carácter, solidez defensiva y un juego que enamoró a su gente. Un Apertura 2025 inolvidable.
-      </p>
-
-      <div class="card-actions">
-        <ion-button color="primary">Ver Detalles</ion-button>
-        <ion-button fill="clear">Más Info</ion-button>
+    <!-- Banner Final Estilo "C" -->
+    <div class="clausura-banner">
+      <div class="team-card">
+        <img src="assets/imagenes/racing-final.jpg" class="team-logo">
+        <span class="team-name">Equipo A</span>
       </div>
-    </ion-card-content>
-  </ion-card>
 
-</div>
+      <div class="center-info">
+        <span class="vs">VS</span>
+        <span class="final-text">Final del Clausura 2025</span>
+      </div>
 
-</ion-content>
+      <div class="team-card">
+        <img src="assets/imagenes/estudiantes-final.jpg" class="team-logo">
+        <span class="team-name">Equipo B</span>
+      </div>
+    </div>
+
+    <!-- Card del Clausura -->
+    <ion-card class="item-card clausura-card">
+      <div class="card-image-wrapper">
+        <div class="swiper clausuraSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="assets/imagenes/estadio-final.jpg" class="card-image">
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <h3 class="card-title clausura-card-title">Estadio Madres De Ciudades</h3>
+        <p class="card-description clausura-description">
+          Racing y Estudiantes se enfrentarán en la gran final del Clausura 2025, que tendrá lugar en

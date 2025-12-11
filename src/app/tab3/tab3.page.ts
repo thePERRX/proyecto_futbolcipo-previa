@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss'],
-  standalone: false,
+  templateUrl: './tab3.page.html',
+  styleUrls: ['./tab3.page.scss'],
+  standalone: false // dejamos falso porque ahora usamos módulo
 })
 export class Tab3Page {
- // Vista inicial
+  // Vista inicial
   view: 'login' | 'register' = 'login';
 
-  // Cambia la pantalla según el botón elegido
+  // Cambia entre login y registro
   setView(mode: 'login' | 'register') {
     this.view = mode;
   }
-  constructor() {}
 
+  constructor() {}
 }
