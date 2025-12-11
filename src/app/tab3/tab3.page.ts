@@ -7,7 +7,13 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class Tab3Page {
+ // Vista inicial
+  view: 'login' | 'register' = 'login';
 
+  // Cambia la pantalla según el botón elegido
+  setView(mode: 'login' | 'register') {
+    this.view = mode;
+  }
   constructor() {}
 
 }

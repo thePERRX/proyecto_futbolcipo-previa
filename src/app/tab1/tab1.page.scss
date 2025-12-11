@@ -329,3 +329,62 @@
 	}
 }
 
+
+
+
+.apertura-section {
+  margin-top: 30px;
+  padding: 10px;
+
+}
+
+.apertura-title {
+  text-align: center;
+  margin: 25px 0 15px;
+}
+
+.apertura-title h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+    color: #ffffff !important;
+}
+
+.apertura-section .title-decoration {
+  width: 60px;
+  height: 4px;
+  background: #3a57e8;
+  margin: 6px auto 0;
+  border-radius: 4px;
+}
+
+
+
+
+
+.mySwiper {
+  width: 100%;
+  height: 220px;
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* tamaño reducido para las flechitas */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white; /* Cambiá a negro si tu imagen es clara */
+  scale: 0.6;   /* achica las flechas */
+}
+
+.swiper-pagination-bullet {
+  background: white;
+  opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+  background: #3880ff; /* Azul Ionic */
+}
+

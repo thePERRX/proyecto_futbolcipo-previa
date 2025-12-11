@@ -1,17 +1,64 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <div class="custom-header">
+    <div class="header-top">
+        <div class="title-group">
+          <img src="assets/imagenes/logo-cipo.png" alt="Logo" class="header-logo" />
+          <h1>Futbol.ARG</h1>
+        </div>
+      </div>
+      </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Cuenta</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <!-- CONTENEDOR -->
+  <div class="auth-container">
+
+    <!-- BOTONES LOGIN / REGISTRO -->
+    <div class="toggle-buttons">
+      <button [class.active]="view === 'login'" (click)="setView('login')">Iniciar Sesión</button>
+      <button [class.active]="view === 'register'" (click)="setView('register')">Registrarse</button>
+    </div>
+
+    <!-- FORM LOGIN -->
+    <form *ngIf="view === 'login'" class="form">
+      <h2>Bienvenido</h2>
+      <ion-item>
+        <ion-input type="email" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block">Ingresar</ion-button>
+    </form>
+
+    <!-- FORM REGISTRO -->
+    <form *ngIf="view === 'register'" class="form">
+      <h2>Crear Cuenta</h2>
+      <ion-item>
+        <ion-input type="text" placeholder="Nombre completo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="email" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block">Registrarse</ion-button>
+    </form>
+
+  </div>
 </ion-content>
+

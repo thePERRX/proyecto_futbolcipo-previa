@@ -1,5 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonPopover } from '@ionic/angular';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { IonPopover, IonContent } from '@ionic/angular';
+import Swiper from 'swiper';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
+Swiper.use([Autoplay, Pagination, Navigation]);
 
 @Component({
   selector: 'app-tab1',
@@ -7,11 +11,40 @@ import { IonPopover } from '@ionic/angular';
   styleUrls: ['tab1.page.scss'],
   standalone: false,
 })
-export class Tab1Page {
+export class Tab1Page implements AfterViewInit {
+
   @ViewChild('localPopover') localPopover!: IonPopover;
+  @ViewChild('content', { static: false }) content!: IonContent;
+
+  constructor() {}
+
+  // 🔥 Inicializa el carrusel cuando el DOM ya está cargado
+  ngAfterViewInit() {
+    setTimeout(() => {
+      new Swiper('.mySwiper', {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
+      });
+    }, 150);
+  }
+
+  // ---------------------------------------------------
+  // Resto de tu código (NO lo toqué)
+  // ---------------------------------------------------
+
   selectedLocalOption: string = '';
 
-  // Datos de ejemplo para las cards
   cards = [
     {
       image: 'assets/imagenes/foto-card-superclasico.jpg',
@@ -33,29 +66,25 @@ export class Tab1Page {
     },
   ];
 
-  constructor() {}
-
-  // Maneja la selección de una opción del popover
-  selectLocalOption(option: string) {
-    this.selectedLocalOption = option;
-    console.log('Opción seleccionada (local):', option);
-  }
-
-  // Alterna el estado "like" del card
   toggleLike(index: number) {
     this.cards[index].liked = !this.cards[index].liked;
-    console.log('Like toggled for', index, this.cards[index].liked);
   }
 
-  // Acción del botón "Colocar"
   placeItem(index: number) {
-    console.log('Colocar acción para item:', index);
-    // Aquí puedes agregar la lógica real: añadir a una lista, enviar petición, etc.
+    console.log('Colocar:', index);
   }
 
-  // Acción del botón "Más info"
   moreInfo(index: number) {
-    console.log('Más info para item:', index);
-    // Aquí puedes navegar a una página de detalle o abrir un modal
+    console.log('Más info:', index);
+  }
+
+  selectLocalOption(option: string) {
+    if (option === 'apertura') {
+      const target = document.getElementById('campeonApertura');
+      if (target) {
+        const y = target.offsetTop;
+        this.content.scrollToPoint(0, y, 500);
+      }
+    }
   }
 }

@@ -50,7 +50,7 @@
   </ion-toolbar>
 </ion-header>
 <!-- Contenido principal: lista de cards (targetas) apiladas -->
-<ion-content class="page-content" [fullscreen]="true">
+<ion-content  #content class="page-content" [fullscreen]="true">
   <div class="card-section">
     <!-- Título destacado -->
     <div class="section-title">
@@ -80,4 +80,62 @@
     </ion-card>
   </div>
   </div>
+
+
+
+
+  <!-- SECCIÓN ESPECIAL: Campeón Torneo Apertura -->
+<!-- SECCIÓN ESPECIAL: Campeón Torneo Apertura -->
+<div id="campeonApertura" class="apertura-section">
+
+  <div class="apertura-title">
+    <h2>🏆 Campeón Torneo Apertura</h2>
+    <div class="title-decoration"></div>
+  </div>
+
+  <ion-card class="item-card">
+    <div class="card-image-wrapper">
+
+      <!-- CARRUSEL COMPLETO -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <img src="assets/imagenes/platense1.jpeg" class="card-image">
+          </div>
+
+          <div class="swiper-slide">
+            <img src="../../assets/imagenes/platense2.jpg" class="card-image">
+          </div>
+
+          <div class="swiper-slide">
+            <img src="assets/imagenes/platense3.jpg" class="card-image">
+          </div>
+
+        </div>
+
+        <!-- Paginación y flechas deben estar DENTRO -->
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+
+    </div>
+
+    <ion-card-content>
+      <h3 class="card-title">Campeón Torneo Apertura 2025: Platense</h3>
+      <p class="card-description">
+        El Calamar cerró un torneo histórico, mostrando carácter, solidez defensiva y un juego que enamoró a su gente. Un Apertura 2025 inolvidable.
+      </p>
+
+      <div class="card-actions">
+        <ion-button color="primary">Ver Detalles</ion-button>
+        <ion-button fill="clear">Más Info</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</div>
+
 </ion-content>

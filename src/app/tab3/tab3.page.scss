@@ -1,0 +1,107 @@
+/* Estilos para el header personalizado en tab1 */
+.custom-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* centra el contenido horizontalmente */
+	width: 100%;
+	box-sizing: border-box;
+	/* Fondo oscuro pastel y variables locales para fácil ajuste */
+	--header-bg: #2D3E50; /* oscuro pastel (azul grisáceo) */
+	--header-foreground: #FFFFFF; /* color del texto sobre el header */
+	background: var(--header-bg);
+	color: var(--header-foreground);
+	/* tipografía para el header */
+	font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 600;
+	/* un poco de padding para separar del toolbar */
+	padding: 8px 0;
+}
+
+.custom-header .header-top {
+	width: 100%;
+	display: flex;
+	flex-direction: row; /* fuerza logo y título en la misma línea */
+	justify-content: center; /* título centrado */
+	align-items: center; /* centra verticalmente */
+	gap: 6px; /* reducido para acercar título y logo */
+	padding: 8px 12px;
+	flex-wrap: nowrap; /* evita que se apilen */
+}
+
+
+.custom-header .header-top h1 {
+	margin: 0;
+	font-size: 1.15rem;
+	text-align: center;
+	/* color blanco para buen contraste sobre fondo oscuro */
+	color: var(--header-foreground);
+	line-height: 1; 
+}
+
+/* Logo junto al título */
+.custom-header .header-top .header-logo {
+    height: 38px; /* ligeramente reducido para mejor encaje */
+    width: auto;
+    margin-right: 6px; /* reducido para acercar al título */
+    display: inline-block;
+    object-fit: contain;
+}
+
+/* Grupo que contiene logo + título: aplicamos aquí el borde inferior estético */
+.custom-header .header-top .title-group {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding-bottom: 8px; /* espacio para el borde */
+	/* borde bonito: color claro sobre oscuro */
+	border-bottom: 3px solid rgba(255,255,255,0.12);
+	border-radius: 6px;
+	/* sombra sutil para separar visualmente */
+	box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+
+.auth-container {
+  width: 90%;
+  max-width: 350px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.toggle-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 3px solid transparent;
+}
+
+.toggle-buttons button.active {
+  color: #6A5AFE;
+  border-bottom: 3px solid #6A5AFE;
+  font-weight: 700;
+}
+
+.form h2 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+ion-item {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  --background: #F6F6FA;
+}
+
+ion-button {
+  margin-top: 15px;
+  --background: #6A5AFE;
+}
